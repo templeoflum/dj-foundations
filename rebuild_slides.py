@@ -288,14 +288,14 @@ def fix_slide_2(prs):
         title_shape.top = Inches(0.30)
         title_shape.width = Inches(9.50)
         title_shape.height = Inches(1.25)
-        print(f"  Title at (0.50\", 0.30\") - matching slides 1 & 3")
+        print(f"  Title at (0.50\", 0.30\")")
 
     if content_shape:
         content_shape.left = Inches(0.50)
-        content_shape.top = Inches(1.75)
+        content_shape.top = Inches(1.05)  # Right below title, matching slides 1 & 3
         content_shape.width = Inches(4.50)
         content_shape.height = Inches(2.00)
-        print(f"  Content text at (0.50\", 1.75\") - matching slides 1 & 3")
+        print(f"  Content text at (0.50\", 1.05\") - matching slides 1 & 3")
 
     # Position images - PRESERVE ASPECT RATIOS
     if len(pictures) >= 2:
@@ -318,20 +318,20 @@ def fix_slide_2(prs):
         meme_aspect = meme_char.width.inches / meme_char.height.inches if meme_char.height.inches > 0 else 1
 
         # Position DJ photo: right side, below title, preserve aspect ratio
-        # Target: 5.0" wide, calculate height from aspect ratio
-        dj_target_width = 5.0
+        # Target: 4.5" wide, calculate height from aspect ratio
+        dj_target_width = 4.5
         dj_target_height = dj_target_width / dj_aspect
         # Cap height to not exceed slide
-        dj_target_height = min(dj_target_height, 4.8)
+        dj_target_height = min(dj_target_height, 4.5)
         # Recalculate width if height was capped
-        if dj_target_height == 4.8:
+        if dj_target_height == 4.5:
             dj_target_width = dj_target_height * dj_aspect
 
-        dj_photo.left = Inches(5.0)
-        dj_photo.top = Inches(0.8)  # Below title
+        dj_photo.left = Inches(5.0)  # Right side
+        dj_photo.top = Inches(1.2)   # Clearly below title
         dj_photo.width = Inches(dj_target_width)
         dj_photo.height = Inches(dj_target_height)
-        print(f"  DJ photo at (5.0\", 0.8\"), size={dj_target_width:.1f}\"x{dj_target_height:.1f}\" (aspect preserved)")
+        print(f"  DJ photo at (5.3\", 1.0\"), size={dj_target_width:.1f}\"x{dj_target_height:.1f}\" (aspect preserved)")
 
         # Position meme character: bottom-left CORNER, preserve aspect ratio
         # Target: 2.0" wide, calculate height from aspect ratio
