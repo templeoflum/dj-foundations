@@ -305,3 +305,73 @@ git add . && git commit -m "Update resources" && git push
 ```
 
 Changes deploy automatically via GitHub Pages (usually within 1-2 minutes)
+
+---
+
+## Practice Guide QR Code Addition
+
+### Date: January 29, 2026
+
+---
+
+## Problem Statement
+
+The practice guide PDF needed a way for students to easily access the online resources. Adding a scannable QR code would allow quick access via phone.
+
+---
+
+## Solution: PyMuPDF PDF Editing
+
+Used PyMuPDF (fitz) library to add QR code and text to existing PDF without recreating it.
+
+### Placement Process
+
+Finding the right placement required iteration:
+1. First attempt: Bottom right corner overlapping footer - rejected
+2. Second attempt: Below footer but too small - adjusted
+3. Third attempt: Larger QR but text not aligned - fixed
+4. Final: 0.90" QR code, right-aligned text, URL fallback
+
+### Final Placement
+
+- **Location:** Bottom right corner, below footer line
+- **QR Size:** 65 points (0.90") - scannable on standard letter paper
+- **Text:** "More Resources" in teal (#2dd4bf), right-aligned to QR edge
+- **URL Fallback:** `templeoflum.github.io/dj-foundations-resources` in gray, right-aligned below label
+
+### Code Pattern
+
+```python
+import fitz
+
+doc = fitz.open('practice_guide.pdf')
+page = doc[0]
+
+# Get actual text width for precise right-alignment
+text_end_x = qr_x - 2  # 2px gap from QR
+label_length = fitz.get_text_length(label, fontsize=label_fontsize)
+label_x = text_end_x - label_length  # Right-align
+
+page.insert_image(qr_rect, filename='qr-code.png')
+page.insert_text(fitz.Point(label_x, label_y), label, fontsize=7, color=(0.18, 0.83, 0.75))
+
+doc.save('practice_guide_updated.pdf')
+```
+
+### Key Learnings
+
+1. **Use `fitz.get_text_length()`** for precise text positioning - character count estimation is inaccurate
+2. **Right-align by calculating:** `x = end_position - text_width`
+3. **QR code minimum size:** ~0.75" for reliable scanning on printed paper
+4. **Iterate visually** - PDF coordinate math doesn't always match visual expectations
+
+### Files
+
+- **Input:** `source material/dj_foundations_practice_guide_13.pdf`
+- **Output:** `source material/dj_foundations_practice_guide_14.pdf`
+
+### Dependencies
+
+```
+pip install pymupdf
+```
