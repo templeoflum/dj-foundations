@@ -223,9 +223,85 @@ Outputs:
 ## Dependencies
 
 ```
-pip install python-pptx scikit-image Pillow
+pip install python-pptx scikit-image Pillow qrcode[pil]
 ```
 
 System requirements:
 - LibreOffice (for PDF export)
 - pdftoppm (poppler-utils)
+- GitHub CLI (`winget install GitHub.cli`)
+
+---
+
+## Resources Page - GitHub Pages Deployment
+
+### Date: January 29, 2026
+
+---
+
+## Problem Statement
+
+The original `dj_resources.pdf` was a static PDF with no clickable links. Students needed an easy way to access all the resources with working links, ideally via a QR code they could scan.
+
+---
+
+## Solution: GitHub Pages Web App
+
+Created a styled HTML page matching the presentation theme (dark background, teal accents) and deployed it to GitHub Pages.
+
+### Files Created
+
+- `docs/index.html` - Styled resources page with all links
+- `docs/qr-code.png` - QR code linking to the live site
+
+### Deployment
+
+1. Installed GitHub CLI: `winget install GitHub.cli`
+2. Authenticated via SSH: `gh auth login -p ssh -h github.com -w`
+3. Created repo: `gh repo create dj-foundations-resources --public`
+4. Enabled GitHub Pages via API
+5. Generated QR code with Python `qrcode` library
+
+### Live URLs
+
+- **Resources Page:** https://templeoflum.github.io/dj-foundations-resources/
+- **GitHub Repo:** https://github.com/templeoflum/dj-foundations-resources
+- **QR Code:** https://templeoflum.github.io/dj-foundations-resources/qr-code.png
+
+### Design Specs
+
+- Background: `#1a1a1a`
+- Accent color: `#2dd4bf` (teal)
+- Font: Inter (Google Fonts)
+- Responsive grid layout
+- Hover effects on links
+
+### Categories Included
+
+- Music Sources (Beatport, Bandcamp, SoundCloud, Beatsource)
+- DJ Software (Rekordbox, Serato, Traktor, djay Pro, Virtual DJ)
+- Utilities (LameXP, Mixed In Key)
+- Beginner Controllers
+- Education resources
+- Video Content & DJ Sets (Boiler Room, HÖR Berlin, Cercle, etc.)
+- Record Labels & Collectives (40+ links)
+- Genres to Explore
+- Essential Terms
+
+### Usage
+
+Students can:
+1. Scan the QR code from slides/handouts
+2. Access all resources with clickable links on any device
+3. Bookmark for future reference
+
+### Updating Resources
+
+To update the resources page:
+```bash
+cd "DJ Foundations/docs"
+# Edit index.html
+git add . && git commit -m "Update resources" && git push
+```
+
+Changes deploy automatically via GitHub Pages (usually within 1-2 minutes)
