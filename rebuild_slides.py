@@ -332,20 +332,21 @@ def fix_slide_2(prs):
         dj_photo.height = Inches(dj_target_height)
         print(f"  DJ photo at (5.0\", 0.8\"), size={dj_target_width:.1f}\"x{dj_target_height:.1f}\" (aspect preserved)")
 
-        # Position meme character: bottom-left, preserve aspect ratio
+        # Position meme character: bottom-left CORNER, preserve aspect ratio
         # Target: 2.0" wide, calculate height from aspect ratio
         meme_target_width = 2.0
         meme_target_height = meme_target_width / meme_aspect
         # Cap to reasonable size
-        meme_target_height = min(meme_target_height, 2.5)
-        if meme_target_height == 2.5:
+        meme_target_height = min(meme_target_height, 2.3)
+        if meme_target_height == 2.3:
             meme_target_width = meme_target_height * meme_aspect
 
+        # Position in bottom-left corner (consistent with other slides' text placement)
         meme_char.left = Inches(0.3)
-        meme_char.top = Inches(3.0)
+        meme_char.top = Inches(5.62 - meme_target_height - 0.1)  # Bottom corner with small margin
         meme_char.width = Inches(meme_target_width)
         meme_char.height = Inches(meme_target_height)
-        print(f"  Meme character at (0.3\", 3.0\"), size={meme_target_width:.1f}\"x{meme_target_height:.1f}\" (aspect preserved)")
+        print(f"  Meme character at bottom-left corner, size={meme_target_width:.1f}\"x{meme_target_height:.1f}\" (aspect preserved)")
 
     elif len(pictures) == 1:
         pic = pictures[0]
