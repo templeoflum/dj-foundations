@@ -375,3 +375,86 @@ doc.save('practice_guide_updated.pdf')
 ```
 pip install pymupdf
 ```
+
+---
+
+## Repository Housecleaning
+
+### Date: January 29, 2026
+
+---
+
+## Problem Statement
+
+The repository had accumulated temporary files, old versions, and unused dependencies from the development process. Needed a clean structure for maintainability.
+
+---
+
+## Solution: Targeted Cleanup
+
+### Files Removed
+
+**Old practice guide versions:**
+- `source material/dj_foundations_practice_guide_4.pdf`
+- `source material/dj_foundations_practice_guide_5.pdf`
+
+**Unused Node.js packages:**
+- `package.json`
+- `package-lock.json`
+- `node_modules/`
+
+**Old scripts (replaced by Python versions):**
+- `screenshot-slides.js`
+- `verify-slides.js`
+- `export_slides.ps1`
+
+**Temporary/output directories:**
+- `backups/`
+- `slide_exports/`
+- `slide_diffs/`
+- `original_export/`
+- `verification-screenshots/`
+
+**Misc:**
+- `nul` (Windows junk file)
+- `DJ_Foundations.html` (old export)
+- `verification_report.txt`
+
+### Repository Structure
+
+The `docs/` folder is a separate GitHub Pages repository and is now excluded from the main repo via `.gitignore`.
+
+**Two GitHub repositories:**
+1. **dj-foundations** (main project): https://github.com/templeoflum/dj-foundations
+2. **dj-foundations-resources** (GitHub Pages): https://github.com/templeoflum/dj-foundations-resources
+
+### Final Structure
+
+```
+DJ Foundations/
+├── .gitignore
+├── DEVLOG.md
+├── DJ_Foundations.pptx
+├── rebuild_slides.py
+├── verify_slides.py
+├── docs/                    # Separate GH Pages repo (gitignored)
+│   ├── index.html
+│   └── qr-code.png
+└── source material/
+    ├── DJ Foundations - sketchpad.pdf
+    ├── dj_foundations_practice_guide_13.pdf
+    ├── dj_foundations_practice_guide_14.pdf
+    ├── DJ_Foundations_Styled (4).pptx
+    ├── DJ_Foundations_Styled.deck
+    ├── DJ_Foundations_Styled.pdf
+    ├── dj_resources.pdf
+    ├── images/
+    └── modern_oscilloscope_palette.pdf
+```
+
+### Files Kept
+
+- `rebuild_slides.py` - Useful for future PPTX fixes
+- `verify_slides.py` - Useful for verification pipeline
+- `dj_foundations_practice_guide_13.pdf` - Base version (before QR)
+- `dj_foundations_practice_guide_14.pdf` - Final version (with QR)
