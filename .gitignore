@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Exports and temp files
+slide_exports/
+slide_diffs/
+original_export/
+verification-screenshots/
+
+# Backups (can regenerate)
+backups/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

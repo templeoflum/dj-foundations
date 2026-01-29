@@ -1,0 +1,23 @@
+SLIDE VERIFICATION REPORT
+========================================
+
+Slide  1: 89.4% - NEEDS_WORK
+Slide  2: 61.8% - MAJOR_DIFF
+Slide  3: 88.2% - NEEDS_WORK
+Slide  4: 92.3% - OK
+Slide  5: 93.1% - OK
+Slide  6: 89.4% - NEEDS_WORK
+Slide  7: 91.2% - OK
+Slide  8: 92.8% - OK
+Slide  9: 67.9% - MAJOR_DIFF
+Slide 10: 92.8% - OK
+Slide 11: 91.2% - OK
+Slide 12: 89.4% - NEEDS_WORK
+Slide 13: 89.6% - NEEDS_WORK
+Slide 14: 92.5% - OK
+Slide 15: 60.6% - MAJOR_DIFF
+Slide 16: 90.8% - OK
+Slide 17: 89.9% - NEEDS_WORK
+Slide 18: 75.7% - NEEDS_WORK
+Slide 19: 67.3% - MAJOR_DIFF
+Slide 20: 97.9% - OK
