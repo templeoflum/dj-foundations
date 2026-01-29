@@ -282,19 +282,20 @@ def fix_slide_2(prs):
         else:
             content_shape = shape
 
+    # Match positioning of slides 1 & 3 for consistency
     if title_shape:
-        title_shape.left = Inches(0.2)
-        title_shape.top = Inches(0.15)
-        title_shape.width = Inches(9.6)
-        title_shape.height = Inches(0.8)
-        print(f"  Title at (0.2\", 0.15\")")
+        title_shape.left = Inches(0.50)
+        title_shape.top = Inches(0.30)
+        title_shape.width = Inches(9.50)
+        title_shape.height = Inches(1.25)
+        print(f"  Title at (0.50\", 0.30\") - matching slides 1 & 3")
 
     if content_shape:
-        content_shape.left = Inches(0.2)
-        content_shape.top = Inches(1.1)
-        content_shape.width = Inches(4.4)
-        content_shape.height = Inches(1.8)
-        print(f"  Content text at (0.2\", 1.1\"), width=4.4\"")
+        content_shape.left = Inches(0.50)
+        content_shape.top = Inches(1.75)
+        content_shape.width = Inches(4.50)
+        content_shape.height = Inches(2.00)
+        print(f"  Content text at (0.50\", 1.75\") - matching slides 1 & 3")
 
     # Position images - PRESERVE ASPECT RATIOS
     if len(pictures) >= 2:
