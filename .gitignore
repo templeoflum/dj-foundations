@@ -1,14 +1,12 @@
-# Node modules
-node_modules/
-
 # Exports and temp files
 slide_exports/
 slide_diffs/
 original_export/
 verification-screenshots/
-
-# Backups (can regenerate)
 backups/
+
+# Node (not used, but in case)
+node_modules/
 
 # Python cache
 __pycache__/
@@ -17,3 +15,4 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+docs/
