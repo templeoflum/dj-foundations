@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Foundations Flyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0D0D0D;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* 1080x1080 Instagram square */
+        .flyer {
+            width: 1080px;
+            height: 1080px;
+            background: #1A1A1A;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Grid lines overlay */
+        .flyer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(#2A2A2A 1px, transparent 1px),
+                linear-gradient(90deg, #2A2A2A 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .top-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .venue {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #FF6600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-family: 'Inter', sans-serif;
+            font-size: 100px;
+            font-weight: 700;
+            color: #00FFFF;
+            line-height: 1.0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            color: #E8E8E8;
+            font-weight: 400;
+        }
+
+        .middle-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .description {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            color: #A0A0A0;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .topic {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            color: #E8E8E8;
+            background: #2A2A2A;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border-left: 3px solid #00FFFF;
+        }
+
+        .instructor {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            color: #FF6600;
+            margin-top: 32px;
+        }
+
+        .bottom-section {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .date {
+            font-size: 44px;
+            font-weight: 700;
+            color: #E8E8E8;
+            margin-bottom: 8px;
+        }
+
+        .time-location {
+            font-size: 26px;
+            color: #808080;
+        }
+
+        .qr-section {
+            text-align: right;
+        }
+
+        .qr-code {
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            background: #E8E8E8;
+            padding: 8px;
+        }
+
+        .qr-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #808080;
+            margin-top: 12px;
+        }
+
+        /* Decorative accent lines */
+        .accent-line {
+            position: absolute;
+            top: 60px;
+            right: 60px;
+            width: 100px;
+            height: 4px;
+            background: #00FFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .accent-line-2 {
+            position: absolute;
+            top: 72px;
+            right: 60px;
+            width: 60px;
+            height: 4px;
+            background: #FF6600;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+        }
+
+        /* Cost badge - optional */
+        .cost-badge {
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            background: #FF6600;
+            color: #1A1A1A;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            padding: 14px 24px;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="accent-line"></div>
+        <div class="accent-line-2"></div>
+        <!-- Uncomment if there's a cost -->
+        <!-- <div class="cost-badge">FREE</div> -->
+
+        <div class="top-section">
+            <h1 class="title">DJ<br>Foundations</h1>
+            <p class="subtitle">Song Prep in Rekordbox<br>Mixing on Pioneer Gear</p>
+        </div>
+
+        <div class="middle-section">
+            <p class="description">
+                Learn to prep tracks in Rekordbox, load a USB,
+                and start practicing at open decks.
+            </p>
+            <div class="topics">
+                <span class="topic">Song Prep</span>
+                <span class="topic">Beatmatching</span>
+                <span class="topic">Phrasing</span>
+                <span class="topic">Basic Mixing</span>
+            </div>
+            <p class="instructor">taught by HeDawn</p>
+        </div>
+
+        <div class="bottom-section">
+            <div class="details">
+                <div class="date">Tuesday, February 24th</div>
+                <div class="time-location">6:00 PM · All Ages · Free</div>
+            </div>
+            <div class="qr-section">
+                <img class="qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADHUlEQVR4nO1cbYrjMAyVkkB/urAHmKOkN9gjzdWao+wBBuqfhQQtkmUnwzIwmZZ2Xb/3Y+pxItLIQh/PclloN6ZuvwwRhBxQhAOKcEARDijCAUU4oIiaFMGOgWjSz5PNRhstnEa8XqjinXYCQp8VMYriosMgImdadPV7IYoHsZHhs9A+QKguRUR3AHyyUTwIUbgyTUciOSc3Mjzv6+0ChO6qiPGiJhBmknM8iJzDNceKez/pO4DQwxUx/DMThGgyGwgzMYV7PamDUFUWETRHiDZcdK6fNZKQTCeNH5FI6nmnDkK3K2KySuKoQ00hNHRYPsnvabSkUuMOT9oHCD3JR8h2amFJ3sIzS3YPcuOTOghVoQhKVeVohacWmSmpLCO59NurhvN//k4dhG63CNqYgNUaOhdmJSrKnNITxlvAIl7fIsScQmKozDYoc1XJR2Q3Ah/RjEWIuYLMSubQ4WSm2cbmZviIJqJGhocJ8wwzreEkBxFYRBNCsiYOEw/Ep3DlxFmKXHWnS9nLCBa7ysX9aR5Bpa7IxYVnD7rdle7zwIKo0UTUCDmPKLugZiDJVFIxiuqzLYuQYgf5gkaSXIx6CoE8oq3MckxxQVc/h4616gAf0SBnOaY//TatSA005iP0AvKI5jhLsoyi8JOZu/Y6FFGjKc6S3CyKHZQUwspSo6nAR7SUR4gbg2cUW6bSIgksoqk8QlbPkLOHTQlawgnyiHaEFm2DUH7S6ErrwbV+27crO00FzrLaxf15rdHnXohcYaz0BPY1Wtv7dPjCl1hReCm3F70He5+v31XH/l8/iwUH7aUTTSuYojZfxl+zt9s9+Ot1EHqSIkZzENply29lf8sSh1J9Tkff88I6NXWmy6Hndt61BJ34INap7XlnTe+0CxD68gRPHGaZjh8kGivEi5ALsZ0AHa2xCtpztKGIoMf6orXNzH7ac/zDqSL1Bszq3ukbgNAXZ7pE150pfAyWNMj0W8vP2M85YiigvWb6LPvSPqXbXUZbJ3rCt8lThYrq85WFGL9MVsU6dRBKgCIcUIQDinBAEQ4owvG4zPIvvZuYd/CElgcAAAAASUVORK5CYII=" alt="QR Code">
+                <div class="qr-label">Resources<br><span style="font-size: 0.8em; opacity: 0.7;">templeoflum.github.io/dj-foundations</span></div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
