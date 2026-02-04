@@ -2,28 +2,39 @@
 
 Simple templates for promoting DJ Foundations at B-Side.
 
-## Files
+## Ready-to-Use PNGs
 
 | File | Size | Use |
 |------|------|-----|
-| `social-flyer.html` | 1080x1080 | Instagram/Facebook post |
+| `social-flyer.png` | 1080x1080 | Instagram/Facebook square post |
+| `ig-4x5-flyer.png` | 1080x1350 | Instagram feed (4:5 ratio) |
+| `story-flyer.png` | 1080x1920 | Instagram/Facebook story |
+| `fb-event-banner.png` | 1920x1005 | Facebook event cover |
+
+## HTML Templates
+
+| File | Size | Use |
+|------|------|-----|
+| `social-flyer.html` | 1080x1080 | Instagram/Facebook square post |
+| `ig-4x5-flyer.html` | 1080x1350 | Instagram feed (4:5 ratio) |
 | `story-flyer.html` | 1080x1920 | Instagram/Facebook story |
 | `fb-event-banner.html` | 1920x1005 | Facebook event cover |
 | `copy-templates.md` | — | Captions and event descriptions |
 
 ## How to Use
 
+**Using PNGs:** Ready to post directly to social media.
+
+**Editing HTML templates:**
 1. Open the HTML file in a browser
 2. Edit the text in the HTML (date, time, cost, etc.)
-3. Screenshot or use browser print-to-PDF
-4. Replace "QR CODE" placeholder with actual QR from `docs/qr-code.png`
+3. Screenshot or re-export as PNG
 
 ### Quick Edit Checklist
 
-- [ ] Date (e.g., "Saturday, March 15")
-- [ ] Time (e.g., "6:00 PM")
-- [ ] Cost (e.g., "Free" or "$10")
-- [ ] Add QR code image
+- [ ] Date (currently: Tuesday, February 24th)
+- [ ] Time (currently: 6:00 PM)
+- [ ] Cost (currently: Free)
 
 ## Colors Used
 
