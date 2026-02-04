@@ -15,4 +15,15 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
-docs/
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+
+# Backup files
+*_backup.*
+*_animated.*
+
+# Claude settings
+.claude/

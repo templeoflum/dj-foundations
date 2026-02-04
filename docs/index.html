@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Foundations Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2dd4bf;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #2dd4bf;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .grid-wide {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        a {
+            color: #a0a0a0;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: block;
+            background: #252525;
+        }
+
+        a:hover {
+            color: #2dd4bf;
+            background: #2a2a2a;
+            transform: translateX(4px);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #252525;
+            color: #a0a0a0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .tag:hover {
+            color: #2dd4bf;
+            border-color: #2dd4bf;
+        }
+
+
+        /* Modal styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #222;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #222;
+        }
+
+        .modal-title {
+            color: #2dd4bf;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #808080;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #e0e0e0;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            color: #c0c0c0;
+        }
+
+        .modal-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-meta-item {
+            background: #1a1a1a;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .modal-meta-label {
+            color: #808080;
+        }
+
+        .modal-meta-value {
+            color: #2dd4bf;
+            font-weight: 600;
+        }
+
+        .modal-section-title {
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-labels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .modal-label-link {
+            background: #2a2a2a;
+            color: #a0a0a0;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .modal-label-link:hover {
+            color: #2dd4bf;
+            background: #333;
+            transform: none;
+        }
+
+        .modal-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2dd4bf;
+            text-decoration: none;
+            font-size: 0.9rem;
+            background: transparent;
+            padding: 0;
+        }
+
+        .modal-link:hover {
+            text-decoration: underline;
+            background: transparent;
+            transform: none;
+        }
+
+        .intro {
+            text-align: center;
+            color: #808080;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .section-note {
+            color: #606060;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #606060;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DJ Foundations Resources</h1>
+        <p class="intro">Curated links to help you on your DJ journey</p>
+
+        <div class="section">
+            <h2>Course Materials</h2>
+            <div class="grid">
+                <a href="DJ-Foundations-Practice-Guide.pdf" target="_blank">Practice Guide (PDF)</a>
+                <a href="https://www.youtube.com/watch?v=Z2l9fouLGrw" target="_blank">CDJ & Mixer Setup Guide (Video)</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Essential Terms</h2>
+            <div class="tags">
+                <span class="tag has-info" data-type="term" data-key="bpm">BPM / Tempo</span>
+                <span class="tag has-info" data-type="term" data-key="bar">Bar</span>
+                <span class="tag has-info" data-type="term" data-key="phrasing">Phrasing</span>
+                <span class="tag has-info" data-type="term" data-key="drop">Drop</span>
+                <span class="tag has-info" data-type="term" data-key="breakdown">Breakdown</span>
+                <span class="tag has-info" data-type="term" data-key="key">Key</span>
+                <span class="tag has-info" data-type="term" data-key="beatmatching">Beatmatching</span>
+                <span class="tag has-info" data-type="term" data-key="beatgrid">Beatgrid</span>
+                <span class="tag has-info" data-type="term" data-key="sync">Sync</span>
+                <span class="tag has-info" data-type="term" data-key="cue">Cue</span>
+                <span class="tag has-info" data-type="term" data-key="loop">Loop</span>
+                <span class="tag has-info" data-type="term" data-key="channel">Channel</span>
+                <span class="tag has-info" data-type="term" data-key="gain">Gain</span>
+                <span class="tag has-info" data-type="term" data-key="eq">EQ</span>
+                <span class="tag has-info" data-type="term" data-key="filter">Filter</span>
+                <span class="tag has-info" data-type="term" data-key="fader">Fader</span>
+                <span class="tag has-info" data-type="term" data-key="crossfader">Crossfader</span>
+                <span class="tag has-info" data-type="term" data-key="jogwheel">Platter / Jog Wheel</span>
+                <span class="tag has-info" data-type="term" data-key="scrubbing">Scrubbing</span>
+                <span class="tag has-info" data-type="term" data-key="headphonecue">Headphone Cue</span>
+                <span class="tag has-info" data-type="term" data-key="keylock">Key Lock</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Genres to Explore</h2>
+            <p class="section-note">Starting points, not strict definitions. Labels are matched by vibe—follow what resonates and discover where it leads.</p>
+            <div class="tags">
+                <span class="tag has-info" data-type="genre" data-key="house">House</span>
+                <span class="tag has-info" data-type="genre" data-key="dnb">Drum & Bass</span>
+                <span class="tag has-info" data-type="genre" data-key="dubstep">Dubstep</span>
+                <span class="tag has-info" data-type="genre" data-key="ukgarage">UK Garage</span>
+                <span class="tag has-info" data-type="genre" data-key="trance">Trance</span>
+                <span class="tag has-info" data-type="genre" data-key="trap">Trap</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Record Labels & Collectives</h2>
+            <div class="grid">
+                <a href="https://inspected.bandcamp.com/" target="_blank">Inspected</a>
+                <a href="https://upscalehq.bandcamp.com/music" target="_blank">Upscale</a>
+                <a href="https://renraku.bandcamp.com/" target="_blank">Renraku Global</a>
+                <a href="visionrecordings.bandcamp.com" target="_blank">Vision Recordings</a>
+                <a href="https://saturaterecords.bandcamp.com/" target="_blank">Saturate Records</a>
+                <a href="https://soundmuseum.bandcamp.com/" target="_blank">Sound Museum</a>
+                <a href="https://1985-music.bandcamp.com/" target="_blank">1985 Music</a>
+                <a href="https://twtwlondon.bandcamp.com/" target="_blank">Twenty Twenty London</a>
+                <a href="https://slugwife.bandcamp.com/artists" target="_blank">Slug Wife</a>
+                <a href="https://hyperdub.bandcamp.com/" target="_blank">Hyperdub</a>
+                <a href="https://astrophonica.bandcamp.com/" target="_blank">Astrophonica</a>
+                <a href="https://projectmooncircle.bandcamp.com/" target="_blank">Project Mooncircle</a>
+                <a href="https://terrorhythm.bandcamp.com/" target="_blank">Terrorythm</a>
+                <a href="https://freshmoon.bandcamp.com/" target="_blank">Freshmoon Records</a>
+                <a href="https://duploc.bandcamp.com/" target="_blank">Duploc</a>
+                <a href="https://whitepeach.bandcamp.com/" target="_blank">White Peach Records</a>
+                <a href="https://bhumprecords.bandcamp.com/" target="_blank">Bhump Records</a>
+                <a href="https://lowhighpresents.bandcamp.com/" target="_blank">Low & High</a>
+                <a href="https://sleevelessrecords.bandcamp.com/" target="_blank">Sleeveless Records</a>
+                <a href="https://gravitasrecordings.bandcamp.com/" target="_blank">Gravitas</a>
+                <a href="https://colonyproductions.bandcamp.com/artists" target="_blank">Colony Productions</a>
+                <a href="https://deadbeatsofficial.bandcamp.com/music" target="_blank">Deadbeats</a>
+                <a href="https://deepdarkdangerous.bandcamp.com/" target="_blank">Deep Dark & Dangerous</a>
+                <a href="https://wakaan.bandcamp.com/" target="_blank">Wakaan</a>
+                <a href="https://dirtybirdrecords.bandcamp.com/" target="_blank">Dirtybird</a>
+                <a href="https://golddiggerrecords.bandcamp.com/" target="_blank">Gold Digger Records</a>
+                <a href="https://mau5trap.bandcamp.com/" target="_blank">Mau5trap</a>
+                <a href="https://foolsgoldrecs.bandcamp.com/" target="_blank">Fools Gold Records</a>
+                <a href="https://maddecent.bandcamp.com/music" target="_blank">Mad Decent</a>
+                <a href="https://pcmusic.bandcamp.com/" target="_blank">PC Music</a>
+                <a href="https://movingcastlemusic.bandcamp.com/music" target="_blank">Moving Castle</a>
+                <a href="https://soulection.bandcamp.com/" target="_blank">Soulection</a>
+                <a href="https://nightowlcollective.bandcamp.com/" target="_blank">Nightowl Collective</a>
+                <a href="https://kumocollective.bandcamp.com/" target="_blank">KUMO Collective</a>
+                <a href="https://phuturecollective.bandcamp.com/" target="_blank">Phuture Collective</a>
+                <a href="https://blackmarblerecords.bandcamp.com/music" target="_blank">Black Marble Collective</a>
+                <a href="https://svnsetwaves.bandcamp.com/" target="_blank">SVNSET WAVES</a>
+                <a href="https://kiwirekords.bandcamp.com/" target="_blank">Kiwi Rekords</a>
+                <a href="https://steppersclub.bandcamp.com/" target="_blank">Steppers Club</a>
+                <a href="https://garageshared.bandcamp.com/" target="_blank">Garage Shared</a>
+                <a href="https://swamp81.bandcamp.com/" target="_blank">Swamp 81</a>
+                <a href="https://teklife.bandcamp.com/" target="_blank">Teklife</a>
+                <a href="https://hospitalrecords.bandcamp.com/" target="_blank">Hospital Records</a>
+                <a href="https://soundcloud.com/above_the_surface" target="_blank">Above The Surface</a>
+                <a href="https://soundcloud.com/below_the_surface" target="_blank">Below The Surface</a>
+                <a href="https://soundcloud.com/beatteamsupreme" target="_blank">Team Supreme</a>
+                <a href="https://soundcloud.com/jadudala" target="_blank">Jadū Dala</a>
+                <a href="https://soundcloud.com/culminatepresents" target="_blank">Culminate</a>
+                <a href="https://soundcloud.com/AllGoodRecs" target="_blank">All Good Records</a>
+                <a href="https://lowtempmusic.com" target="_blank">Lowtemp Music</a>
+                <a href="https://soundcloud.com/dramaclubrecs" target="_blank">Drama Club Recordings</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Music Sources</h2>
+            <div class="grid">
+                <a href="https://www.beatport.com" target="_blank">Beatport</a>
+                <a href="https://bandcamp.com" target="_blank">Bandcamp</a>
+                <a href="https://soundcloud.com" target="_blank">SoundCloud</a>
+                <a href="https://www.beatsource.com" target="_blank">Beatsource</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Video Content & DJ Sets</h2>
+            <div class="grid">
+                <a href="https://boilerroom.tv" target="_blank">Boiler Room</a>
+                <a href="https://hoer.live/" target="_blank">HÖR Berlin</a>
+                <a href="https://defineeverythingfuture.com/" target="_blank">DEF TV</a>
+                <a href="https://www.cercle.io/" target="_blank">Cercle</a>
+                <a href="https://elevatormusic.live/" target="_blank">Elevator Music</a>
+                <a href="https://www.subtleradio.com/" target="_blank">Subtle Radio</a>
+                <a href="https://mixmag.net/" target="_blank">Mixmag</a>
+                <a href="https://solo.to/rawcuts" target="_blank">RAWCUTS TV</a>
+                <a href="https://kioskradio.com/" target="_blank">Kiosk Radio</a>
+                <a href="https://keephush.net/" target="_blank">Keep Hush</a>
+                <a href="https://rinse.fm" target="_blank">Rinse FM</a>
+                <a href="https://ra.co" target="_blank">Resident Advisor</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <div class="grid grid-wide">
+                <a href="https://slamacademy.com" target="_blank">Slam Academy</a>
+                <a href="https://encanti.com/" target="_blank">Encanti Music Academy</a>
+                <a href="https://online.iomusic.academy/" target="_blank">IO Music Academy</a>
+                <a href="https://hq.synthesis.audio/c/announcements/" target="_blank">Synthesis</a>
+                <a href="https://bassgorilla.com" target="_blank">BassGorilla</a>
+                <a href="https://mixedinkey.com/harmonic-mixing-guide" target="_blank">Harmonic Mixing Guide</a>
+                <a href="https://mixedinkey.com/book/" target="_blank">Beyond Beatmatching</a>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="section">
+                <h2>DJ Software</h2>
+                <div class="grid">
+                    <a href="https://rekordbox.com" target="_blank">Rekordbox</a>
+                    <a href="https://serato.com" target="_blank">Serato</a>
+                    <a href="https://www.native-instruments.com/en/catalog/djing/dj-software/" target="_blank">Traktor</a>
+                    <a href="https://www.algoriddim.com/djay" target="_blank">djay Pro</a>
+                    <a href="https://www.virtualdj.com" target="_blank">Virtual DJ</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Utilities</h2>
+                <div class="grid">
+                    <a href="https://lamexp.sourceforge.io" target="_blank">LameXP</a>
+                    <a href="https://mixedinkey.com" target="_blank">Mixed In Key</a>
+                    <a href="https://mvsep.com" target="_blank">MVSEP</a>
+                    <a href="https://www.mp3tag.de/en/" target="_blank">MP3Tag</a>
+                    <a href="https://www.audacityteam.org" target="_blank">Audacity</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Beginner Controllers</h2>
+            <div class="grid">
+                <a href="https://www.numark.com/product/party-mix-ii" target="_blank">Numark Party Mix II</a>
+                <a href="https://www.pioneerdj.com/en/product/controller/ddj-flx2" target="_blank">Pioneer DDJ-FLX2</a>
+                <a href="https://www.native-instruments.com/en/catalog/djing/dj-controllers/?sort=price_asc" target="_blank">NI Traktor MX2</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>DJ Foundations - Song Prep & Basic Mixing</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title"></h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Genre data
+        const genres = {
+            house: {
+                title: "House",
+                bpm: "120-130",
+                origin: "Chicago, early 1980s",
+                description: "One of electronic music's foundational genres, house emerged from Chicago's club scene. Built on a steady four-on-the-floor kick drum, house encompasses countless subgenres from deep and soulful to hard and jackin'. It remains the backbone of global dance music culture.",
+                labels: [
+                    { name: "Dirtybird", url: "https://dirtybirdrecords.bandcamp.com/" },
+                    { name: "Soulection", url: "https://soulection.bandcamp.com/" },
+                    { name: "Gold Digger Records", url: "https://golddiggerrecords.bandcamp.com/" },
+                    { name: "Moving Castle", url: "https://movingcastlemusic.bandcamp.com/music" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/house" }
+            },
+            dnb: {
+                title: "Drum & Bass",
+                bpm: "170-180",
+                origin: "UK, mid 1990s",
+                description: "Evolved from jungle, drum & bass emphasizes fast breakbeats and heavy bass. The genre spans from liquid funk's melodic atmospheres to neurofunk's technical sound design. It remains one of the UK's most influential electronic exports with a dedicated global scene.",
+                labels: [
+                    { name: "Hospital Records", url: "https://hospitalrecords.bandcamp.com/" },
+                    { name: "Astrophonica", url: "https://astrophonica.bandcamp.com/" },
+                    { name: "1985 Music", url: "https://1985-music.bandcamp.com/" },
+                    { name: "Inspected", url: "https://inspected.bandcamp.com/" },
+                    { name: "Slug Wife", url: "https://slugwife.bandcamp.com/artists" },
+                    { name: "Renraku Global", url: "https://renraku.bandcamp.com/" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/drum-n-bass" }
+            },
+            dubstep: {
+                title: "Dubstep",
+                bpm: "140",
+                origin: "South London, late 1990s",
+                description: "Emerged from UK garage and jungle, dubstep is characterized by sparse, syncopated rhythms and heavy sub-bass. Early dubstep focused on dark atmospheres and wobbling basslines. The genre split in the 2010s between the deeper, minimal UK sound and the aggressive 'brostep' popularized in America.",
+                labels: [
+                    { name: "Hyperdub", url: "https://hyperdub.bandcamp.com/" },
+                    { name: "Deep Dark & Dangerous", url: "https://deepdarkdangerous.bandcamp.com/" },
+                    { name: "Duploc", url: "https://duploc.bandcamp.com/" },
+                    { name: "Vision Recordings", url: "https://visionrecordings.bandcamp.com" },
+                    { name: "Saturate Records", url: "https://saturaterecords.bandcamp.com/" },
+                    { name: "White Peach Records", url: "https://whitepeach.bandcamp.com/" },
+                    { name: "Sleeveless Records", url: "https://sleevelessrecords.bandcamp.com/" },
+                    { name: "Deadbeats", url: "https://deadbeatsofficial.bandcamp.com/music" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/dubstep" }
+            },
+            ukgarage: {
+                title: "UK Garage",
+                bpm: "130-140",
+                origin: "London, mid 1990s",
+                description: "Born from American garage house filtered through British rave culture. Defined by shuffling 2-step rhythms, chopped vocals, and warm bass. UK Garage spawned numerous subgenres including 2-step, speed garage, and bassline, and directly influenced dubstep and grime.",
+                labels: [
+                    { name: "Garage Shared", url: "https://garageshared.bandcamp.com/" },
+                    { name: "Swamp 81", url: "https://swamp81.bandcamp.com/" },
+                    { name: "Kiwi Rekords", url: "https://kiwirekords.bandcamp.com/" },
+                    { name: "Steppers Club", url: "https://steppersclub.bandcamp.com/" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/uk-garage" }
+            },
+            trance: {
+                title: "Trance",
+                bpm: "130-150",
+                origin: "Germany, early 1990s",
+                description: "Known for its hypnotic, repetitive melodies and build-and-release structure. Trance aims for euphoric, transcendent experiences through layered synths and emotional breakdowns. Subgenres include progressive, psytrance, uplifting, and tech trance.",
+                labels: [
+                    { name: "Mau5trap", url: "https://mau5trap.bandcamp.com/" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/trance" }
+            },
+            trap: {
+                title: "Trap",
+                bpm: "140 (half-time feel)",
+                origin: "Atlanta, early 2000s",
+                description: "Originally a hip-hop subgenre from the American South, trap is defined by rolling hi-hats, heavy 808 bass, and dark atmospheres. EDM trap emerged in the 2010s, blending these elements with festival-ready drops. The style has influenced nearly every corner of electronic music.",
+                labels: [
+                    { name: "Mad Decent", url: "https://maddecent.bandcamp.com/music" },
+                    { name: "Fools Gold Records", url: "https://foolsgoldrecs.bandcamp.com/" },
+                    { name: "Wakaan", url: "https://wakaan.bandcamp.com/" },
+                    { name: "Jadū Dala", url: "https://soundcloud.com/jadudala" }
+                ],
+                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/trap" }
+            }
+        };
+
+        // Term data
+        const terms = {
+            scrubbing: {
+                title: "Scrubbing",
+                description: "Moving through a track manually by touching and moving the jog wheel or platter. Used to find specific points in a track, set cue points, or preview sections. Scratching is an advanced form of scrubbing used as a performance technique."
+            },
+            bpm: {
+                title: "BPM / Tempo",
+                description: "Beats Per Minute - the measurement of a track's speed. Most DJ software analyzes and displays BPM automatically. Understanding BPM helps you mix tracks that are compatible in speed. For example, house typically runs 120-130 BPM while drum & bass is around 170-180 BPM."
+            },
+            key: {
+                title: "Key",
+                description: "The musical key of a track (e.g., A minor, G major). Mixing tracks in compatible keys creates harmonic blends that sound musical rather than dissonant. Tools like Mixed In Key analyze tracks, and systems like the Camelot Wheel help identify compatible keys quickly."
+            },
+            phrasing: {
+                title: "Phrasing",
+                description: "The structure of musical sections, typically in multiples of 8 bars (8, 16, 32). Most electronic music changes elements (drops, breakdowns, new melodies) at phrase boundaries. Mixing on the phrase means aligning these sections between two tracks so transitions feel natural."
+            },
+            beatmatching: {
+                title: "Beatmatching",
+                description: "The fundamental DJ skill of adjusting one track's tempo to match another so their beats align. This involves using the pitch fader to speed up or slow down a track, and nudging the jog wheel to sync the beats. While sync buttons exist, manual beatmatching develops crucial listening skills."
+            },
+            eq: {
+                title: "EQ (Equalization)",
+                description: "Mixer controls that adjust frequency bands - typically Low (bass), Mid (vocals, melodies), and High (hi-hats, cymbals). EQ is essential for smooth transitions: cutting the bass on an incoming track prevents the low end from clashing, then swapping the bass frequencies creates a clean mix."
+            },
+            filter: {
+                title: "Filter",
+                description: "An effect that removes frequencies above (low-pass) or below (high-pass) a cutoff point. Sweeping a low-pass filter gradually removes highs, creating a muffled sound useful for transitions. High-pass filters thin out the bass, useful for bringing in a new track."
+            },
+            cue: {
+                title: "Cue",
+                description: "A saved point in a track that you can instantly jump to. The main cue point is typically set at the first beat. Hot cues let you save multiple points for drops, vocals, or other key moments. Cueing is essential for preparing tracks and creating precise mixes."
+            },
+            loop: {
+                title: "Loop",
+                description: "A section of a track that repeats continuously. DJs use loops to extend sections, build tension, or hold a groove while preparing the next track. Loop lengths are typically musical divisions: 1, 2, 4, 8, 16, or 32 beats."
+            },
+            bar: {
+                title: "Bar",
+                description: "A musical unit typically containing 4 beats in electronic music (4/4 time). Most dance music is structured in 4, 8, 16, or 32 bar sections. Understanding bars helps with phrasing and knowing when changes will occur in a track."
+            },
+            channel: {
+                title: "Channel",
+                description: "An input path on a mixer corresponding to one audio source (deck, turntable, or input). Each channel has its own volume fader, EQ controls, and gain. A standard DJ mixer has 2-4 channels."
+            },
+            gain: {
+                title: "Gain",
+                description: "The input level control at the top of each mixer channel. Proper gain staging ensures tracks play at consistent volumes and prevents distortion. Set gain so the track peaks around 0dB on the meter, adjusting for each track's loudness."
+            },
+            fader: {
+                title: "Fader",
+                description: "A sliding volume control. Channel faders control individual deck volumes, while the crossfader blends between two channels. Moving a fader up increases volume; moving it down decreases it. The crossfader moves left/right to blend between decks."
+            },
+            jogwheel: {
+                title: "Platter / Jog Wheel",
+                description: "The circular control surface on DJ controllers and CDJs used to manipulate playback. Touch the top to scratch or scrub; touch the side to nudge the track forward or back for beatmatching. Some platters are motorized to simulate vinyl feel."
+            },
+            sync: {
+                title: "Sync",
+                description: "A button that automatically matches the BPM of one track to another. While useful for beginners or complex multi-deck setups, learning manual beatmatching first develops essential listening skills. Many DJs use sync as a tool alongside manual techniques."
+            },
+            drop: {
+                title: "Drop",
+                description: "The climactic moment when the full beat and bass kick back in after a breakdown or build-up. Drops are the peak energy moments in a track. Timing your mix so both tracks drop together creates powerful moments on the dancefloor."
+            },
+            breakdown: {
+                title: "Breakdown",
+                description: "A section where the kick drum and bass drop out, leaving atmospheric or melodic elements. Breakdowns build tension before the drop. They're ideal moments to bring in a new track since there's less rhythmic content to clash."
+            },
+            beatgrid: {
+                title: "Beatgrid",
+                description: "Visual markers in DJ software that align with a track's beats. An accurate beatgrid ensures loops snap to musical divisions and sync works correctly. Most software auto-detects beatgrids, but tracks with tempo changes or live drums may need manual adjustment."
+            },
+            crossfader: {
+                title: "Crossfader",
+                description: "The horizontal slider that blends audio between two channels. Moving it left plays channel 1; right plays channel 2; center plays both. Used for quick cuts in scratch DJing or smooth blends in mixing. The curve setting controls how quickly it transitions."
+            },
+            headphonecue: {
+                title: "Headphone Cue",
+                description: "Also called PFL (Pre-Fader Listen). Lets you preview a track in your headphones before the audience hears it. Essential for beatmatching and cueing up the next track. The cue/master knob blends between what you're previewing and what's playing out."
+            },
+            keylock: {
+                title: "Key Lock",
+                description: "Also called master tempo. Keeps a track's pitch constant when you change its speed. Without key lock, speeding up a track raises its pitch (chipmunk effect). Useful for mixing tracks at different BPMs while maintaining harmonic compatibility."
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const modalClose = document.getElementById('modal-close');
+
+        function openModal(type, key) {
+            let content = '';
+
+            if (type === 'genre' && genres[key]) {
+                const g = genres[key];
+                modalTitle.textContent = g.title;
+                content = `
+                    <div class="modal-meta">
+                        <div class="modal-meta-item">
+                            <span class="modal-meta-label">BPM: </span>
+                            <span class="modal-meta-value">${g.bpm}</span>
+                        </div>
+                        <div class="modal-meta-item">
+                            <span class="modal-meta-label">Origin: </span>
+                            <span class="modal-meta-value">${g.origin}</span>
+                        </div>
+                    </div>
+                    <p>${g.description}</p>
+                    <div class="modal-section-title">Labels to explore</div>
+                    <div class="modal-labels">
+                        ${g.labels.map(l => `<a href="${l.url}" target="_blank" class="modal-label-link">${l.name}</a>`).join('')}
+                    </div>
+                    <a href="${g.link.url}" target="_blank" class="modal-link">${g.link.text} →</a>
+                `;
+            } else if (type === 'term' && terms[key]) {
+                const t = terms[key];
+                modalTitle.textContent = t.title;
+                content = `<p>${t.description}</p>`;
+            }
+
+            modalBody.innerHTML = content;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Event listeners
+        document.querySelectorAll('.tag.has-info').forEach(tag => {
+            tag.addEventListener('click', () => {
+                openModal(tag.dataset.type, tag.dataset.key);
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
