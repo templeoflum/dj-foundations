@@ -285,6 +285,61 @@
             font-style: italic;
         }
 
+        .surprise-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .surprise-btn {
+            background: transparent;
+            color: #2dd4bf;
+            border: 2px solid #2dd4bf;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .surprise-btn:hover {
+            background: #2dd4bf;
+            color: #1a1a1a;
+        }
+
+        .modal-nav {
+            display: none;
+            padding: 0.75rem 1.5rem;
+            border-top: 1px solid #333;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-nav.active {
+            display: flex;
+        }
+
+        .modal-nav-btn {
+            background: none;
+            border: 1px solid #444;
+            color: #808080;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-nav-btn:hover {
+            color: #2dd4bf;
+            border-color: #2dd4bf;
+        }
+
         footer {
             text-align: center;
             margin-top: 4rem;
@@ -298,6 +353,10 @@
     <div class="container">
         <h1>DJ Foundations Resources</h1>
         <p class="intro">Curated links to help you on your DJ journey</p>
+
+        <div class="surprise-container">
+            <button class="surprise-btn" id="surprise-btn">Surprise Me</button>
+        </div>
 
         <div class="section">
             <h2>Course Materials</h2>
@@ -350,7 +409,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="labels-section">
             <h2>Record Labels & Collectives</h2>
             <div class="grid">
                 <a href="https://1985-music.bandcamp.com/" target="_blank">1985 Music</a>
@@ -396,7 +455,7 @@
                 <a href="https://partica.bandcamp.com/" target="_blank">Partica</a>
                 <a href="https://pcmusic.bandcamp.com/" target="_blank">PC Music</a>
                 <a href="https://phuturecollective.bandcamp.com/" target="_blank">Phuture Collective</a>
-                <a href="https://prettylightsmusic.com/" target="_blank">Pretty Lights Music</a>
+                <a href="https://soundcloud.com/prettylights" target="_blank">Pretty Lights Music</a>
                 <a href="https://principediscos.bandcamp.com/" target="_blank">Príncipe Discos</a>
                 <a href="https://projectmooncircle.bandcamp.com/" target="_blank">Project Mooncircle</a>
                 <a href="https://qualitygoodsrecords.bandcamp.com/" target="_blank">Quality Goods Records</a>
@@ -435,7 +494,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="video-section">
             <h2>Video Content & DJ Sets</h2>
             <div class="grid">
                 <a href="https://boilerroom.tv" target="_blank">Boiler Room</a>
@@ -512,6 +571,10 @@
                 <button class="modal-close" id="modal-close">&times;</button>
             </div>
             <div class="modal-body" id="modal-body"></div>
+            <div class="modal-nav" id="modal-nav">
+                <button class="modal-nav-btn" id="nav-prev" aria-label="Previous">&#8592;</button>
+                <button class="modal-nav-btn" id="nav-next" aria-label="Next">&#8594;</button>
+            </div>
         </div>
     </div>
 
@@ -622,7 +685,7 @@
                 origin: "Denver / Colorado, mid 2000s",
                 description: "Pretty Lights (Derek Vincent Smith) coined the term \"electro soul\" and pioneered the sound — sample-heavy electronic production fused with funk, soul, blues, and hip-hop, released for free online during the Myspace era. His 2006 debut Taking Up Your Precious Time became a template: chopped vintage soul and funk records layered over glitchy hip-hop beats and buzzing synths. GRiZ, Gramatik, and Big Gigantic expanded the sound with live instrumentation — saxophone, guitar, keys — creating the \"livetronica\" crossover that dominates festival main stages. Red Rocks became the scene's spiritual home. The music carries Motown DNA through electronic bass — groove over drop.",
                 labels: [
-                    { name: "Pretty Lights Music", url: "https://prettylightsmusic.com/" },
+                    { name: "Pretty Lights Music", url: "https://soundcloud.com/prettylights" },
                     { name: "Lowtemp Music", url: "https://lowtempmusic.com" },
                     { name: "All Good Records", url: "https://soundcloud.com/AllGoodRecs" },
                     { name: "Gravitas", url: "https://gravitasrecordings.bandcamp.com/" },
@@ -797,6 +860,13 @@
         const modalClose = document.getElementById('modal-close');
 
         function openModal(type, key) {
+            currentType = type;
+            if (type === 'genre') {
+                currentKeys = genreKeys;
+            } else if (type === 'term') {
+                currentKeys = termKeys;
+            }
+            currentIndex = currentKeys.indexOf(key);
             let content = '';
 
             if (type === 'genre' && genres[key]) {
@@ -830,11 +900,13 @@
             }
 
             modalBody.innerHTML = content;
+            modalNav.classList.add('active');
             modal.classList.add('active');
         }
 
         function closeModal() {
             modal.classList.remove('active');
+            modalNav.classList.remove('active');
         }
 
         // Event listeners
@@ -850,6 +922,42 @@
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
+            if (modal.classList.contains('active') && currentType) {
+                if (e.key === 'ArrowLeft') navigateModal(-1);
+                if (e.key === 'ArrowRight') navigateModal(1);
+            }
+        });
+
+        // Modal navigation
+        const modalNav = document.getElementById('modal-nav');
+        const navPrev = document.getElementById('nav-prev');
+        const navNext = document.getElementById('nav-next');
+
+        const genreKeys = Array.from(document.querySelectorAll('[data-type="genre"]')).map(el => el.dataset.key);
+        const termKeys = Array.from(document.querySelectorAll('[data-type="term"]')).map(el => el.dataset.key);
+
+        let currentType = null;
+        let currentKeys = [];
+        let currentIndex = -1;
+
+        function navigateModal(dir) {
+            if (!currentType) return;
+            currentIndex = (currentIndex + dir + currentKeys.length) % currentKeys.length;
+            openModal(currentType, currentKeys[currentIndex]);
+        }
+
+        navPrev.addEventListener('click', (e) => { e.stopPropagation(); navigateModal(-1); });
+        navNext.addEventListener('click', (e) => { e.stopPropagation(); navigateModal(1); });
+
+        // Surprise Me
+        const surpriseLinks = [
+            ...Array.from(document.querySelectorAll('#labels-section a')).map(a => a.href),
+            ...Array.from(document.querySelectorAll('#video-section a')).map(a => a.href)
+        ];
+
+        document.getElementById('surprise-btn').addEventListener('click', () => {
+            const url = surpriseLinks[Math.floor(Math.random() * surpriseLinks.length)];
+            window.open(url, '_blank');
         });
     </script>
 </body>
