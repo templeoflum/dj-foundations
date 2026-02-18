@@ -248,19 +248,26 @@
             transform: none;
         }
 
-        .modal-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: #2dd4bf;
-            text-decoration: none;
-            font-size: 0.9rem;
-            background: transparent;
-            padding: 0;
+        .modal-deep-dive {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .modal-link:hover {
-            text-decoration: underline;
-            background: transparent;
+        .modal-dive-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            background: #2a2a2a;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            display: block;
+            line-height: 1.4;
+        }
+
+        .modal-dive-link:hover {
+            color: #2dd4bf;
+            background: #333;
             transform: none;
         }
 
@@ -335,8 +342,11 @@
                 <span class="tag has-info" data-type="genre" data-key="dnb">Drum & Bass</span>
                 <span class="tag has-info" data-type="genre" data-key="dubstep">Dubstep</span>
                 <span class="tag has-info" data-type="genre" data-key="ukgarage">UK Garage</span>
-                <span class="tag has-info" data-type="genre" data-key="trance">Trance</span>
                 <span class="tag has-info" data-type="genre" data-key="trap">Trap</span>
+                <span class="tag has-info" data-type="genre" data-key="futurebeats">Future Beats</span>
+                <span class="tag has-info" data-type="genre" data-key="footwork">Footwork</span>
+                <span class="tag has-info" data-type="genre" data-key="electrosoul">Electro Soul</span>
+                <span class="tag has-info" data-type="genre" data-key="dembow">Dembow</span>
             </div>
         </div>
 
@@ -346,7 +356,7 @@
                 <a href="https://inspected.bandcamp.com/" target="_blank">Inspected</a>
                 <a href="https://upscalehq.bandcamp.com/music" target="_blank">Upscale</a>
                 <a href="https://renraku.bandcamp.com/" target="_blank">Renraku Global</a>
-                <a href="visionrecordings.bandcamp.com" target="_blank">Vision Recordings</a>
+                <a href="https://visionrecordings.bandcamp.com" target="_blank">Vision Recordings</a>
                 <a href="https://saturaterecords.bandcamp.com/" target="_blank">Saturate Records</a>
                 <a href="https://soundmuseum.bandcamp.com/" target="_blank">Sound Museum</a>
                 <a href="https://1985-music.bandcamp.com/" target="_blank">1985 Music</a>
@@ -394,6 +404,24 @@
                 <a href="https://soundcloud.com/AllGoodRecs" target="_blank">All Good Records</a>
                 <a href="https://lowtempmusic.com" target="_blank">Lowtemp Music</a>
                 <a href="https://soundcloud.com/dramaclubrecs" target="_blank">Drama Club Recordings</a>
+                <a href="https://qualitygoodsrecords.bandcamp.com/" target="_blank">Quality Goods Records</a>
+                <a href="https://partica.bandcamp.com/" target="_blank">Partica</a>
+                <a href="https://suscollective.bandcamp.com/" target="_blank">SUS Collective</a>
+                <a href="https://soundcloud.com/adbcrecords" target="_blank">ADBC Records</a>
+                <a href="https://domeofdoom.bandcamp.com/" target="_blank">Dome of Doom</a>
+                <a href="https://soundcloud.com/recordrecordparis" target="_blank">Record Record</a>
+                <a href="https://futureclassic.bandcamp.com/" target="_blank">Future Classic</a>
+                <a href="https://prettylightsmusic.com/" target="_blank">Pretty Lights Music</a>
+                <a href="https://foreignfamily.bandcamp.com/" target="_blank">Foreign Family Collective</a>
+                <a href="https://forbiddentrax.bandcamp.com/" target="_blank">Forbidden Trax</a>
+                <a href="https://bitbird.bandcamp.com/" target="_blank">bitbird</a>
+                <a href="https://enchufada.bandcamp.com/" target="_blank">Enchufada</a>
+                <a href="https://principediscos.bandcamp.com/" target="_blank">Príncipe Discos</a>
+                <a href="https://thisiskuduro.bandcamp.com/" target="_blank">This is Kuduro</a>
+                <a href="https://hermanitolabel.bandcamp.com/" target="_blank">Hermanito</a>
+                <a href="https://tratratrax.bandcamp.com/" target="_blank">TraTraTrax</a>
+                <a href="https://zzkrecords.bandcamp.com/" target="_blank">ZZK Records</a>
+                <a href="https://manrecordings.bandcamp.com/" target="_blank">Man Recordings</a>
             </div>
         </div>
 
@@ -492,84 +520,185 @@
         const genres = {
             house: {
                 title: "House",
-                bpm: "120-130",
+                bpm: "120–130",
                 origin: "Chicago, early 1980s",
-                description: "One of electronic music's foundational genres, house emerged from Chicago's club scene. Built on a steady four-on-the-floor kick drum, house encompasses countless subgenres from deep and soulful to hard and jackin'. It remains the backbone of global dance music culture.",
+                description: "Born in Chicago's Black and queer club scene in the early 1980s, house music grew directly out of the post-disco void. After the backlash of Disco Demolition Night (1979), DJs like Frankie Knuckles at The Warehouse and Ron Hardy at the Music Box began blending disco, funk, and European electronic music with drum machines to create something new. Built on a steady four-on-the-floor kick, house became both a genre and a sanctuary. Producers like Jesse Saunders, Chip E., Marshall Jefferson, and Phuture pushed the sound forward, and by the late '80s it crossed the Atlantic to fuel the UK rave explosion. From deep and soulful to hard and jackin', house remains the backbone of global dance music.",
                 labels: [
                     { name: "Dirtybird", url: "https://dirtybirdrecords.bandcamp.com/" },
-                    { name: "Soulection", url: "https://soulection.bandcamp.com/" },
                     { name: "Gold Digger Records", url: "https://golddiggerrecords.bandcamp.com/" },
-                    { name: "Moving Castle", url: "https://movingcastlemusic.bandcamp.com/music" }
+                    { name: "Mau5trap", url: "https://mau5trap.bandcamp.com/" }
                 ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/house" }
+                deepDive: [
+                    { title: "NPR: \"From the Warehouse to the World\"", desc: "Oral history from the people who created it", url: "https://www.npr.org/2023/03/02/1160484070/chicago-birth-of-house-music" },
+                    { title: "PBS / WTTW: \"House Music: A Cultural Revolution\"", desc: "Free documentary covering 40 years", url: "https://www.pbs.org/video/house-music-a-cultural-revolution-keda0d/" },
+                    { title: "Dazed: \"The Beautiful Black Gay History of Chicago House's Birth\"", desc: "", url: "https://www.dazeddigital.com/music/article/35892/1/chicago-house-lgbtq-history-documentary" }
+                ]
             },
             dnb: {
                 title: "Drum & Bass",
-                bpm: "170-180",
-                origin: "UK, mid 1990s",
-                description: "Evolved from jungle, drum & bass emphasizes fast breakbeats and heavy bass. The genre spans from liquid funk's melodic atmospheres to neurofunk's technical sound design. It remains one of the UK's most influential electronic exports with a dedicated global scene.",
+                bpm: "170–180",
+                origin: "UK, early–mid 1990s",
+                description: "Drum & bass evolved from the UK's breakbeat hardcore and jungle scenes of the early '90s — a collision of rave culture, Jamaican sound system traditions, hip-hop sampling, and the iconic Amen break. London pirate radio and nights like Fabio & Grooverider's Rage fueled the shift from jungle's dancehall-infused breakbeats toward a tighter, more futuristic sound. Labels like Metalheadz and Moving Shadow pushed boundaries, while Roni Size's Mercury Prize win in 1997 brought mainstream attention. The genre spans from liquid funk's melodic atmospheres to neurofunk's technical sound design to halftime's heavy, spacious grooves. It remains one of the UK's most influential electronic exports with a dedicated global scene.",
                 labels: [
                     { name: "Hospital Records", url: "https://hospitalrecords.bandcamp.com/" },
                     { name: "Astrophonica", url: "https://astrophonica.bandcamp.com/" },
                     { name: "1985 Music", url: "https://1985-music.bandcamp.com/" },
                     { name: "Inspected", url: "https://inspected.bandcamp.com/" },
                     { name: "Slug Wife", url: "https://slugwife.bandcamp.com/artists" },
-                    { name: "Renraku Global", url: "https://renraku.bandcamp.com/" }
+                    { name: "Renraku Global", url: "https://renraku.bandcamp.com/" },
+                    { name: "Vision Recordings", url: "https://visionrecordings.bandcamp.com" },
+                    { name: "Sound Museum", url: "https://soundmuseum.bandcamp.com/" },
+                    { name: "Saturate Records", url: "https://saturaterecords.bandcamp.com/" },
+                    { name: "Upscale", url: "https://upscalehq.bandcamp.com/music" },
+                    { name: "Colony Productions", url: "https://colonyproductions.bandcamp.com/artists" }
                 ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/drum-n-bass" }
+                deepDive: [
+                    { title: "Beatport: \"The Definitive History of Drum & Bass\"", desc: "Comprehensive, from jungle to now", url: "https://www.beatportal.com/features/beatports-definitive-history-of-drum-bass/" },
+                    { title: "Drum Trip: \"What Is Jungle? The Evolution 1992–1996\"", desc: "Year-by-year breakdown with companion mix", url: "https://drumtrip.co.uk/news/what-is-jungle-the-history-1992-to-1996/" },
+                    { title: "Wikipedia: \"History of Drum and Bass\"", desc: "Thorough reference spanning the full timeline", url: "https://en.wikipedia.org/wiki/History_of_drum_and_bass" }
+                ]
             },
             dubstep: {
                 title: "Dubstep",
                 bpm: "140",
-                origin: "South London, late 1990s",
-                description: "Emerged from UK garage and jungle, dubstep is characterized by sparse, syncopated rhythms and heavy sub-bass. Early dubstep focused on dark atmospheres and wobbling basslines. The genre split in the 2010s between the deeper, minimal UK sound and the aggressive 'brostep' popularized in America.",
+                origin: "South London (Croydon), early 2000s",
+                description: "Dubstep emerged in the early 2000s from South London — specifically Croydon, where the Big Apple Records shop became a gathering point for young producers like Skream, Benga, Digital Mystikz (Mala & Coki), and Loefah. The sound grew out of UK garage's darker experiments, blending 2-step rhythms with dub reggae's bass weight and sparse production. The FWD>> night at Plastic People and pirate station Rinse FM were crucial to building the scene. Characterized by syncopated rhythms, heavy sub-bass, and dark atmospheres, early dubstep valued space and tension. The genre split in the late 2000s — the deeper, minimal UK sound continued through labels like DMZ, while a more aggressive style crossed over to American festival stages.",
                 labels: [
-                    { name: "Hyperdub", url: "https://hyperdub.bandcamp.com/" },
                     { name: "Deep Dark & Dangerous", url: "https://deepdarkdangerous.bandcamp.com/" },
                     { name: "Duploc", url: "https://duploc.bandcamp.com/" },
-                    { name: "Vision Recordings", url: "https://visionrecordings.bandcamp.com" },
-                    { name: "Saturate Records", url: "https://saturaterecords.bandcamp.com/" },
                     { name: "White Peach Records", url: "https://whitepeach.bandcamp.com/" },
                     { name: "Sleeveless Records", url: "https://sleevelessrecords.bandcamp.com/" },
-                    { name: "Deadbeats", url: "https://deadbeatsofficial.bandcamp.com/music" }
+                    { name: "Deadbeats", url: "https://deadbeatsofficial.bandcamp.com/music" },
+                    { name: "Wakaan", url: "https://wakaan.bandcamp.com/" },
+                    { name: "Bhump Records", url: "https://bhumprecords.bandcamp.com/" },
+                    { name: "Low & High", url: "https://lowhighpresents.bandcamp.com/" },
+                    { name: "Drama Club Recordings", url: "https://soundcloud.com/dramaclubrecs" },
+                    { name: "Twenty Twenty London", url: "https://twtwlondon.bandcamp.com/" },
+                    { name: "Terrorythm", url: "https://terrorhythm.bandcamp.com/" }
                 ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/dubstep" }
+                deepDive: [
+                    { title: "Museum of Youth Culture: \"A Brief History of Early Dubstep\"", desc: "From Big Apple Records to FWD>>", url: "https://www.museumofyouthculture.com/a-brief-history-of-early-dubstep/" },
+                    { title: "VICE: \"The Oral History of Dubstep\"", desc: "First-person accounts from Mala, Skream, Loefah and the builders", url: "https://www.vice.com/en/article/an-oral-history-of-dubstep-vice-lauren-martin-610/" },
+                    { title: "Splice: \"What Is Dubstep Music? History, Artists, and Subgenres\"", desc: "Full arc from Croydon to crossover", url: "https://splice.com/blog/what-is-dubstep-music/" }
+                ]
             },
             ukgarage: {
                 title: "UK Garage",
-                bpm: "130-140",
+                bpm: "130–140",
                 origin: "London, mid 1990s",
-                description: "Born from American garage house filtered through British rave culture. Defined by shuffling 2-step rhythms, chopped vocals, and warm bass. UK Garage spawned numerous subgenres including 2-step, speed garage, and bassline, and directly influenced dubstep and grime.",
+                description: "UK Garage traces back to New York's Paradise Garage club, where DJ Larry Levan's soulful house sets in the late '70s and '80s defined \"garage house.\" When those records crossed the Atlantic, London DJs pitched them up and added bass weight, creating speed garage by the mid-'90s. The sound evolved into 2-step — shuffling rhythms with the kick removed from beats 2 and 4, creating space for chopped vocals and warm sub-bass. Pirate stations like Rinse FM and Kool FM spread it across the city, and by 1999 acts like Artful Dodger, Craig David, and So Solid Crew took it mainstream. UK Garage's fragmentation in the early 2000s directly spawned grime, dubstep, and bassline, making it one of the most consequential genres in British electronic music.",
                 labels: [
                     { name: "Garage Shared", url: "https://garageshared.bandcamp.com/" },
                     { name: "Swamp 81", url: "https://swamp81.bandcamp.com/" },
                     { name: "Kiwi Rekords", url: "https://kiwirekords.bandcamp.com/" },
                     { name: "Steppers Club", url: "https://steppersclub.bandcamp.com/" }
                 ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/uk-garage" }
-            },
-            trance: {
-                title: "Trance",
-                bpm: "130-150",
-                origin: "Germany, early 1990s",
-                description: "Known for its hypnotic, repetitive melodies and build-and-release structure. Trance aims for euphoric, transcendent experiences through layered synths and emotional breakdowns. Subgenres include progressive, psytrance, uplifting, and tech trance.",
-                labels: [
-                    { name: "Mau5trap", url: "https://mau5trap.bandcamp.com/" }
-                ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/trance" }
+                deepDive: [
+                    { title: "MusicRadar: \"Everything You Need to Know About UK Garage\"", desc: "Production-focused history with key tracks", url: "https://www.musicradar.com/news/everything-you-need-to-know-about-uk-garage" },
+                    { title: "Firebird: \"What Do You Know About UK Garage?\"", desc: "Cultural history covering migration, pirate radio, and legacy", url: "https://firebirdmagazine.com/music-history/ukgarage" },
+                    { title: "UK Garage Live: \"Exploring the Origins of UK Garage\"", desc: "From acid house roots through 2-step", url: "https://ukgarage.live/exploring-the-origins-of-uk-garage" }
+                ]
             },
             trap: {
                 title: "Trap",
                 bpm: "140 (half-time feel)",
-                origin: "Atlanta, early 2000s",
-                description: "Originally a hip-hop subgenre from the American South, trap is defined by rolling hi-hats, heavy 808 bass, and dark atmospheres. EDM trap emerged in the 2010s, blending these elements with festival-ready drops. The style has influenced nearly every corner of electronic music.",
+                origin: "Atlanta, late 1990s / early 2000s",
+                description: "Trap originated as a hip-hop subgenre from Atlanta's Southern rap scene, named after the \"trap houses\" where drugs were dealt. The sound crystallized through producers like Shawty Redd and DJ Toomp and rappers T.I. (whose 2003 album Trap Muzik named the genre), Young Jeezy, and Gucci Mane. Defined by rolling hi-hats, heavy 808 bass, and dark atmospheres, trap became the dominant sound in hip-hop by the 2010s through producer Lex Luger and artists like Future, Migos, and Travis Scott. When Scottish producers Hudson Mohawke and Rustie began dropping Luger's beats into DJ sets, EDM trap was born — blending those elements with festival-ready builds and drops. The style has since influenced nearly every corner of electronic and popular music.",
                 labels: [
                     { name: "Mad Decent", url: "https://maddecent.bandcamp.com/music" },
                     { name: "Fools Gold Records", url: "https://foolsgoldrecs.bandcamp.com/" },
-                    { name: "Wakaan", url: "https://wakaan.bandcamp.com/" },
-                    { name: "Jadū Dala", url: "https://soundcloud.com/jadudala" }
+                    { name: "Jadū Dala", url: "https://soundcloud.com/jadudala" },
+                    { name: "Quality Goods Records", url: "https://qualitygoodsrecords.bandcamp.com/" },
+                    { name: "Partica", url: "https://partica.bandcamp.com/" },
+                    { name: "Below The Surface", url: "https://soundcloud.com/below_the_surface" },
+                    { name: "Team Supreme", url: "https://soundcloud.com/beatteamsupreme" },
+                    { name: "SUS Collective", url: "https://suscollective.bandcamp.com/" },
+                    { name: "ADBC Records", url: "https://soundcloud.com/adbcrecords" },
+                    { name: "Dome of Doom", url: "https://domeofdoom.bandcamp.com/" }
                 ],
-                link: { text: "Read more on Resident Advisor", url: "https://ra.co/music/trap" }
+                deepDive: [
+                    { title: "NPR: \"The Birth of Trap Music and the Rise of Southern Hip-Hop\"", desc: "From Atlanta streets to global genre", url: "https://www.npr.org/2023/08/10/1193297765/the-birth-of-trap-music-and-the-rise-of-southern-hip-hop" },
+                    { title: "Berklee: \"Trap Music: Where It Came From and Where It's Going\"", desc: "Addresses Black producer erasure and EDM crossover", url: "https://online.berklee.edu/takenote/trap-music-where-it-came-from-and-where-its-going/" },
+                    { title: "Britannica: \"Trap Music\"", desc: "Concise reference covering origins through Latin trap, EDM trap, trap soul", url: "https://www.britannica.com/art/trap-music" }
+                ]
+            },
+            futurebeats: {
+                title: "Future Beats",
+                bpm: "130–170",
+                origin: "Global / Internet era, early 2010s",
+                description: "Future beats and the surrounding ecosystem emerged from the SoundCloud and Bandcamp era of the early 2010s, where genre lines dissolved and producers freely blended hip-hop, R&B, electronic music, and soul. The LA beat scene — centered around the Low End Theory club night and artists on Brainfeeder — laid crucial groundwork, merging jazz, hip-hop, and experimental electronics. From there, Soulection built a global community around warm, sample-heavy beats with soul and R&B sensibilities, while producers like Flume, Wave Racer, and San Holo pushed lush synths and heavy sidechain into festival-ready territory. The style thrives on emotional melody, off-grid rhythms, and a DIY ethos — many of its biggest names broke through collectives and internet communities rather than traditional label structures.",
+                labels: [
+                    { name: "Soulection", url: "https://soulection.bandcamp.com/" },
+                    { name: "Moving Castle", url: "https://movingcastlemusic.bandcamp.com/music" },
+                    { name: "Project Mooncircle", url: "https://projectmooncircle.bandcamp.com/" },
+                    { name: "SVNSET WAVES", url: "https://svnsetwaves.bandcamp.com/" },
+                    { name: "KUMO Collective", url: "https://kumocollective.bandcamp.com/" },
+                    { name: "Phuture Collective", url: "https://phuturecollective.bandcamp.com/" },
+                    { name: "Nightowl Collective", url: "https://nightowlcollective.bandcamp.com/" },
+                    { name: "Record Record", url: "https://soundcloud.com/recordrecordparis" },
+                    { name: "Above The Surface", url: "https://soundcloud.com/above_the_surface" },
+                    { name: "Future Classic", url: "https://futureclassic.bandcamp.com/" }
+                ],
+                deepDive: [
+                    { title: "Stereofox: \"The Astonishing Rise of Future Beats Explained\"", desc: "Traces the lineage from Low End Theory through Soulection to global movement", url: "https://www.stereofox.com/articles/the-rise-of-future-beats-explained/" },
+                    { title: "Stereofox: \"Future Bass — Genre History, Artists and What It Actually Stands For\"", desc: "From FlyLo's wonky beats through Flume's breakout to the SoundCloud era", url: "https://www.stereofox.com/articles/future-bass-genre-history-artists-songs/" },
+                    { title: "Billboard: \"Soulection Brings The Sound of The Future to Beats 1\"", desc: "Profile of how a college radio show became a global platform", url: "https://www.billboard.com/music/rb-hip-hop/soulection-profile-beats-1-interview-6670361/" }
+                ]
+            },
+            footwork: {
+                title: "Footwork",
+                bpm: "~160",
+                origin: "Chicago, late 1990s",
+                description: "Footwork grew out of Chicago's ghetto house scene as a soundtrack for dance battles on the South and West sides. RP Boo's \"Baby Come On\" (1997) is often cited as the founding track — a faster, more abstract variant of ghetto house built to challenge dancers with syncopated rhythms and chopped samples. DJ Rashad and DJ Spinn formed the Teklife crew and pushed the sound from local battle circles to international stages through releases on Hyperdub and Planet Mu. The music is typically made on MPCs, recognizable by its roughly chopped vocal samples, frenetic drum patterns, and ~160 BPM tempo. Dance and music are inseparable — producers were dancers first, and the moves (ghost, dribble, erk, skate) shaped the rhythms. The genre has since spawned scenes in Japan, Mexico, Poland, and the UK.",
+                labels: [
+                    { name: "Teklife", url: "https://teklife.bandcamp.com/" },
+                    { name: "Freshmoon Records", url: "https://freshmoon.bandcamp.com/" },
+                    { name: "Black Marble Collective", url: "https://blackmarblerecords.bandcamp.com/music" },
+                    { name: "Forbidden Trax", url: "https://forbiddentrax.bandcamp.com/" }
+                ],
+                deepDive: [
+                    { title: "Red Bull Music Academy: \"What Is Footwork\"", desc: "Comprehensive guide with embedded lecture clips from Rashad, Spinn, RP Boo, and Kode9", url: "https://www.redbull.com/gb-en/footwork-music-guide-and-history" },
+                    { title: "The Era Footwork Collective: \"Chicago Footwork Dance & Music\"", desc: "History told from within the dance community itself", url: "https://www.theerafootworkcollective.com/about-chicago-footwork" },
+                    { title: "Stamp The Wax: \"A Brief History of Footwork\"", desc: "Alternative history with personal narrative and key track breakdowns", url: "https://www.stampthewax.com/2019/04/12/a-brief-alternative-history-of-footwork/" }
+                ]
+            },
+            electrosoul: {
+                title: "Electro Soul",
+                bpm: "~90–130",
+                origin: "Denver / Colorado, mid 2000s",
+                description: "Pretty Lights (Derek Vincent Smith) coined the term \"electro soul\" and pioneered the sound — sample-heavy electronic production fused with funk, soul, blues, and hip-hop, released for free online during the Myspace era. His 2006 debut Taking Up Your Precious Time became a template: chopped vintage soul and funk records layered over glitchy hip-hop beats and buzzing synths. GRiZ, Gramatik, and Big Gigantic expanded the sound with live instrumentation — saxophone, guitar, keys — creating the \"livetronica\" crossover that dominates festival main stages. Red Rocks became the scene's spiritual home. The music carries Motown DNA through electronic bass — groove over drop.",
+                labels: [
+                    { name: "Pretty Lights Music", url: "https://prettylightsmusic.com/" },
+                    { name: "Lowtemp Music", url: "https://lowtempmusic.com" },
+                    { name: "All Good Records", url: "https://soundcloud.com/AllGoodRecs" },
+                    { name: "Gravitas", url: "https://gravitasrecordings.bandcamp.com/" },
+                    { name: "Foreign Family Collective", url: "https://foreignfamily.bandcamp.com/" }
+                ],
+                deepDive: [
+                    { title: "Denver Post: \"How Electro-Soul Found Its Home in Denver\"", desc: "Oral history with Pretty Lights, GRiZ, Big Gigantic, and the Denver scene", url: "https://theknow.denverpost.com/2016/12/29/electronic-soul-music-scene-denver/131921/" },
+                    { title: "303 Magazine: \"How Colorado Became the Last Great Frontier in Electronic Music\"", desc: "Full arc from Pretty Lights' free releases through Red Rocks dominance", url: "https://303magazine.com/2018/07/colorado-electronic-music/" },
+                    { title: "RaverRafting: \"What Is 'Electro-Soul'?\"", desc: "Genre explainer anchoring DJ Shadow as influence, Pretty Lights as father, and the next generation", url: "https://raverrafting.com/what-is-electro-soul/2013/09/24/" }
+                ]
+            },
+            dembow: {
+                title: "Dembow",
+                bpm: "~100–140",
+                origin: "Kingston → Panama → Puerto Rico → global",
+                description: "The dembow riddim — that syncopated \"boom-ch-boom-chick\" tresillo pattern — is one of the most consequential rhythmic inventions in modern music. Steely & Clevie programmed it in Kingston as the \"Poco Man Jam\" riddim (1989), Shabba Ranks rode it on \"Dem Bow\" (1990, produced by Bobby Digital), and Panamanian artists translated it into Spanish, seeding reggaeton. But the riddim didn't stop there — it mutated across every coastline it touched. In Angola, kuduro producers built uptempo dance music on FL Studio during civil war. Buraka Som Sistema brought kuduro to Europe via Lisbon, where DJ Marfox and the Príncipe Discos crew stripped it to a percussive skeleton called batida. Dave Nada slowed Dutch house to 108 BPM at his cousin's DC house party in 2009 and called it moombahton. Every mutation is different in tempo and texture, but the rhythmic DNA is the same: that tresillo bounce, diaspora-born, made for movement.",
+                labels: [
+                    { name: "Enchufada", url: "https://enchufada.bandcamp.com/" },
+                    { name: "Príncipe Discos", url: "https://principediscos.bandcamp.com/" },
+                    { name: "This is Kuduro", url: "https://thisiskuduro.bandcamp.com/" },
+                    { name: "Hermanito", url: "https://hermanitolabel.bandcamp.com/" },
+                    { name: "TraTraTrax", url: "https://tratratrax.bandcamp.com/" },
+                    { name: "ZZK Records", url: "https://zzkrecords.bandcamp.com/" },
+                    { name: "Man Recordings", url: "https://manrecordings.bandcamp.com/" }
+                ],
+                deepDive: [
+                    { title: "Red Bull Music Academy: \"Dembow: A Loop History\"", desc: "Wayne Marshall's definitive genealogy of the riddim from Steely & Clevie through reggaeton", url: "https://daily.redbullmusicacademy.com/2013/07/dembow-a-loop-history/" },
+                    { title: "Nina Protocol: \"The Half-Forgotten History of Tropical Bass\"", desc: "First-person oral history from inside the scene: ZZK, Man Recordings, TraTraTrax", url: "https://www.ninaprotocol.com/articles/the-halfforgotten-history-of-tropical-bass-part-one" },
+                    { title: "Bandcamp Daily: \"Príncipe and the New Sound of Lisbon\"", desc: "How record shop staffers discovered batida and built one of the decade's most important labels", url: "https://daily.bandcamp.com/label-profile/principe-records-feature" }
+                ]
             }
         };
 
@@ -689,7 +818,10 @@
                     <div class="modal-labels">
                         ${g.labels.map(l => `<a href="${l.url}" target="_blank" class="modal-label-link">${l.name}</a>`).join('')}
                     </div>
-                    <a href="${g.link.url}" target="_blank" class="modal-link">${g.link.text} →</a>
+                    <div class="modal-section-title">Deep Dive</div>
+                    <div class="modal-deep-dive">
+                        ${g.deepDive.map(d => `<a href="${d.url}" target="_blank" class="modal-dive-link">${d.title}${d.desc ? ' — ' + d.desc : ''}</a>`).join('')}
+                    </div>
                 `;
             } else if (type === 'term' && terms[key]) {
                 const t = terms[key];
